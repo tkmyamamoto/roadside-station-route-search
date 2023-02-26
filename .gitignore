@@ -42,3 +42,7 @@ poetry.toml
 # Setup venv related
 setup_venv/rsrs_env/
 setup_venv/*.done
+
+# data related
+data/*
+!.gitkeep
