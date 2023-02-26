@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 PREFECTURES_JP_CODE = {
     "北海道": 1,
     "青森県": 2,
@@ -171,3 +174,25 @@ NAGANO_SPLIT_3 = {
     "長野県中部": ["佐久", "上田", "諏訪", "松本"],
     "長野県南部": ["上伊那", "南信州", "木曽"],
 }
+
+
+def get_code(code_name_list: list):
+    """Get code.
+
+    Args: 
+        code_name_list (list[str]): List of Code name. You can choose from the following.
+        - PREFECTURES_JP_CODE
+        - PREFECTURES_EN_CODE
+        - REGION_JP_CODE
+        - REGION_JP_CONTENTS
+        - NAGANO_SPLIT_10
+        - NAGANO_SPLIT_3
+
+    Returns:
+        code_list (list[dict]): List of Code dict.
+    """
+    code_list = []
+    for code_name in code_name_list:
+        code_list.append(eval(code_name))
+
+    return code_list
