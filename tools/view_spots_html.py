@@ -5,7 +5,6 @@ import os
 
 import leafmap.foliumap as leafmap
 
-from rsrs.common.code import get_code
 from rsrs.misc.load_data import convert_geojson_properties
 
 
