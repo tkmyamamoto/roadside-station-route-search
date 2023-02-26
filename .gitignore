@@ -1,0 +1,46 @@
+# general
+*~
+*.pyc
+\#*\#
+.\#*
+*DS_Store
+slurm-*.out
+tmp*
+.eggs/
+.hypothesis/
+.idea
+.pytest_cache/
+__pycache__/
+check_autopep8
+bats-core/
+shellcheck*
+*.egg-info/
+
+# VScode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+# Local History for Visual Studio Code
+.history/
+# Built Visual Studio Code Extensions
+*.vsix
+
+# tools related
+tools/venv/
+
+# Poetry related
+poetry.lock
+.venv/
+poetry.toml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Setup venv related
+setup_venv/venv/
+setup_venv/*.done
+setup_venv/activate_python.sh
+setup_venv/miniconda.sh
