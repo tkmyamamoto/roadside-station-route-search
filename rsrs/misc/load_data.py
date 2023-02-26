@@ -51,10 +51,10 @@ def convert_geojson_properties(load_json_path: str, save_json_path: str):
     """Convert geojson properties
 
     Args:
-        json_data (list[dict]): Json info of roadside stations.
+        load_json_path (str): Json path of roadside stations to read.
 
     Returns:
-        json_data (list[dict]): Json info of roadside stations after changed.
+        save_json_path (str): Json path of roadside stations after changed to write.
     """
     values_from_to = {": 1.0": ': "○"', ": 2.0": ': "×"'}
     keys_from_to = {
