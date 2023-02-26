@@ -1,8 +1,12 @@
 <div align="center">
-  <img src="resources/logo_repository.png" width="600"/>
+
+<img src="resources/logo_repository.png" width="600"/>
+
+**道の駅のルート検索**
+
 </div>
 
-道の駅のルート検索を行う．
+---
 
 ## Prerequirements
 
