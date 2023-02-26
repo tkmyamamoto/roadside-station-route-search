@@ -6,5 +6,6 @@
   "python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black",
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-  }
+  },
+  "editor.formatOnSave": true
 }
