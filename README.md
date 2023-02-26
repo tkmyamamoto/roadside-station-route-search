@@ -36,7 +36,7 @@ $ . rsrs_env/bin/activate
 
 ## Data Preparation
 
-データは[ここ](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードする．
+データは[国土交通省の国土数値情報ダウンロードサービス（道の駅データ）](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードできる．2023/2/27現在，平成30年度版のデータがリリースされている．
 
 解凍した`P35-18_GML`フォルダは以下の通りに配置する．
 ```sh
