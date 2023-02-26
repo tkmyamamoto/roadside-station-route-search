@@ -1,4 +1,5 @@
 # Roadside Station Route Search
+
 道の駅のルート検索を行う．
 
 ## Prerequirements
@@ -28,6 +29,7 @@ $ . rsrs_env/bin/activate
 ```
 
 ## Data Preparation
+
 データは[ここ](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードする．
 
 解凍した`P35-18_GML`フォルダは以下の通りに配置する．
@@ -42,6 +44,7 @@ $ . rsrs_env/bin/activate
 ```
 
 ### 地域の定義
+
 - 北海道地方  
 国土交通省北海道開発局管内（北海道）
 - 東北地方  
@@ -65,6 +68,7 @@ $ . rsrs_env/bin/activate
 #### 長野県の10区分け
 <details><summary>Expand Details</summary><div>
 参考：https://www.pref.nagano.lg.jp/10koiki/index.html
+
 - 長野県北部  
 北アルプス，長野，北信
 - 長野県中部  
@@ -76,6 +80,7 @@ $ . rsrs_env/bin/activate
 </div></details>
 
 #### 都道府県コード
+
 <details><summary>Expand Code List</summary><div>
 
 | 当道府県名 | コード |
@@ -131,6 +136,7 @@ $ . rsrs_env/bin/activate
 </div></details>
 
 #### 地域コード
+
 <details><summary>Expand Code List</summary><div>
 
 | 地域名 | コード |
@@ -148,7 +154,9 @@ $ . rsrs_env/bin/activate
 </div></details>
 
 ## Run Scripts
+
 ### Preparation
+
 - `PYTHONPATH`を通す．
 ```sh
 cd roadside-station-route-search
