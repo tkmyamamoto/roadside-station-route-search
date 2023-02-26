@@ -1,4 +1,8 @@
-# Roadside Station Route Search
+<div align="center">
+  <img src="resources/logo_michi_no_eki.png" width="200"/>
+</div>
+
+**Roadside Station Route Search**
 
 道の駅のルート検索を行う．
 
@@ -169,7 +173,11 @@ export PYTHONPATH="`pwd`/rsrs:"$PYTHONPATH
 . setup_venv/rsrs_env/bin/activate
 ```
 
-- `tools/view_spots.py`を実行する．
+- 実行する．
 ```sh
-python tools/view_spots.py
+# htmlに保存してから地図を見る
+python tools/view_spots_html.py
+
+# streamlitで地図を見る
+streamlit run tools/view_spots_streamlit.py
 ```
