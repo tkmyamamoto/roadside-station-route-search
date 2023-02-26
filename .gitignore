@@ -40,7 +40,5 @@ poetry.toml
 .ipynb_checkpoints/
 
 # Setup venv related
-setup_venv/venv/
+setup_venv/rsrs_env/
 setup_venv/*.done
-setup_venv/activate_python.sh
-setup_venv/miniconda.sh
