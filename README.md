@@ -24,5 +24,19 @@ $ make showenv
 $ make
 
 # activate created virtualenv
-$ . ./activate_python.sh
+$ . rsrs_env/bin/activate
+```
+
+## Data Preparation
+データは[ここ](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードする．
+
+解凍した`P35-18_GML`フォルダは以下の通りに配置する．
+```sh
+.
+├── data
+│   └── P35-18_GML
+├── rsrs
+├── pyproject.toml
+├── README.md
+└── setup_venv
 ```
