@@ -1,8 +1,6 @@
 <div align="center">
-  <img src="resources/logo_michi_no_eki.png" width="200"/>
+  <img src="resources/logo_repository.png" width="600"/>
 </div>
-
-**Roadside Station Route Search**
 
 道の駅のルート検索を行う．
 
