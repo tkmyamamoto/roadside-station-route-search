@@ -1,6 +1,12 @@
-# Roadside Station Route Search
+<div align="center">
 
-道の駅のルート検索を行う．
+<img src="resources/logo_repository.png" width="600"/>
+
+**道の駅のルート検索**
+
+</div>
+
+---
 
 ## Prerequirements
 
@@ -30,7 +36,7 @@ $ . rsrs_env/bin/activate
 
 ## Data Preparation
 
-データは[ここ](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードする．
+データは[国土交通省の国土数値情報ダウンロードサービス（道の駅データ）](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P35.html)からダウンロードできる．2023/2/27現在，平成30年度版のデータがリリースされている．
 
 解凍した`P35-18_GML`フォルダは以下の通りに配置する．
 ```sh
@@ -62,7 +68,7 @@ $ . rsrs_env/bin/activate
 - 四国地方  
 国土交通省四国地方整備局管内（徳島県、高知県、愛媛県、香川県）
 - 九州地方  
-国土交通省九州地方整備局管内（福岡県、佐賀県、長崎県、熊本県、大分県、宮崎県、鹿児島県）
+国土交通省九州地方整備局管内（福岡県、佐賀県、長崎県、熊本県、大分県、宮崎県、鹿児島県）  
 内閣府沖縄総合事務局管内（沖縄県）
 
 #### 長野県の10区分け
@@ -169,7 +175,11 @@ export PYTHONPATH="`pwd`/rsrs:"$PYTHONPATH
 . setup_venv/rsrs_env/bin/activate
 ```
 
-- `tools/view_spots.py`を実行する．
+- 実行する．
 ```sh
-python tools/view_spots.py
+# htmlに保存してから地図を見る
+python tools/view_spots_html.py
+
+# streamlitで地図を見る
+streamlit run tools/view_spots_streamlit.py
 ```
