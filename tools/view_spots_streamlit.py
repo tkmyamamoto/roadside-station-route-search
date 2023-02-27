@@ -35,7 +35,8 @@ def main():
                 width: 100%;
             }
         </style>
-        """, unsafe_allow_html=True
+        """,
+        unsafe_allow_html=True,
     )
     logo = "resources/logo_michi_no_eki.png"
     st.sidebar.image(logo, width=100)
@@ -50,7 +51,7 @@ def main():
 
     # Setting for map
     st.sidebar.header("Setting for Map")
-    minimap_control = st.sidebar.checkbox('Show minimap')
+    minimap_control = st.sidebar.checkbox("Show minimap")
 
     # Setting for searching
     st.sidebar.header("Setting for Searching")
