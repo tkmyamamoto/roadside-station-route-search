@@ -64,6 +64,11 @@ def get_key_from_list_in_value(d: dict, query: str):
         >>> target_key = get_key_from_list_in_value(d, query)
         >>> print(target_key)
         >>> # key1
+
+        >>> query = 'val1-3'
+        >>> target_key = get_key_from_list_in_value(d, query)
+        >>> print(target_key)
+        >>> # None
     """
     for key, value in d.items():
         if query in value:
