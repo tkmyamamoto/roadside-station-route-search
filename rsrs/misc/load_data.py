@@ -19,34 +19,6 @@ def load_geojson(path):
     return src
 
 
-def change_dict_key(d: dict, old_key: str, new_key: str, default_value=None):
-    """Change dict key.
-
-    Args:
-        d (dict): Target dict.
-        old_key (str): Old key.
-        new_key (str): New key.
-        default_value (Any): Value to be added as a new element when a non-existent key is selected. (default=None)
-
-    Example:
-        >>> d = {'k1': 1, 'k2': 2, 'k3': 3}
-        >>> change_dict_key(d, 'k1', 'k10')
-        >>> print(d)
-        >>> # {'k2': 2, 'k3': 3, 'k10': 1}
-
-        >>> d = {'k1': 1, 'k2': 2, 'k3': 3}
-        >>> change_dict_key(d, 'k10', 'k100')
-        >>> print(d)
-        >>> # {'k1': 1, 'k2': 2, 'k3': 3, 'k100': None}
-
-        >>> d = {'k1': 1, 'k2': 2, 'k3': 3}
-        >>> change_dict_key(d, 'k10', 'k100', 100)
-        >>> print(d)
-        >>> # {'k1': 1, 'k2': 2, 'k3': 3, 'k100': 100}
-    """
-    d[new_key] = d.pop(old_key, default_value)
-
-
 def convert_geojson_properties(load_json_path: str, save_json_path: str):
     """Convert geojson properties
 
