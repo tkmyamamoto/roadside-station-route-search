@@ -30,7 +30,7 @@ def change_dict_key(d: dict, old_key: str, new_key: str, default_value=None):
     d[new_key] = d.pop(old_key, default_value)
 
 
-def get_swap_dict(d):
+def get_swap_dict(d: dict):
     """Get dict that key and value have been swapped.
 
     Args:
@@ -46,3 +46,25 @@ def get_swap_dict(d):
         >>> # {'val1': 'key1', 'val2': 'key2', 'val3': 'key3'}
     """
     return {v: k for k, v in d.items()}
+
+
+def get_key_from_list_in_value(d: dict, query: str):
+    """Get key from list in value of dict.
+
+    Args:
+        d (dict): Target dict.
+        query (str): String to search.
+
+    Returns:
+        key (str): Swapped dict.
+
+    Examples:
+        >>> d = {'key1': ['val1-1', 'val1-2'], 'key2': ['val2-1', 'val2-2', 'val2-3']}
+        >>> query = 'val1-2'
+        >>> target_key = get_key_from_list_in_value(d, query)
+        >>> print(target_key)
+        >>> # key1
+    """
+    for key, value in d.items():
+        if query in value:
+            return key
