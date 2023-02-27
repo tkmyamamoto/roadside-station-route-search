@@ -179,7 +179,7 @@ NAGANO_SPLIT_3 = {
 def get_code(code_name_list: list):
     """Get code.
 
-    Args: 
+    Args:
         code_name_list (list[str]): List of Code name. You can choose from the following.
         - PREFECTURES_JP_CODE
         - PREFECTURES_EN_CODE
