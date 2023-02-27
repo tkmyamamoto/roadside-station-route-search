@@ -32,4 +32,5 @@ def get_region(prefecture: str, municipality=None):
         region = get_key_from_list_in_value(REGION_JP_CONTENTS, nagano_region_3)
     else:
         region = get_key_from_list_in_value(REGION_JP_CONTENTS, prefecture)
+
     return region
