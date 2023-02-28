@@ -17,8 +17,8 @@ def main():
 
     if not os.path.exists(converted_geojson):
         convert_geojson_properties(raw_geojson, converted_geojson)
-    # json_data = load_geojson(converted_geojson)["features"]
-    # pprint(json_data[0])
+    json_data = load_geojson(converted_geojson)["features"]
+    stations_cnt = len(json_data)
 
     st.set_page_config(layout="wide")
 
@@ -73,7 +73,7 @@ def main():
         This multipage app template demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and [leafmap](https://leafmap.org). It is an open-source project and you are very welcome to contribute to the [GitHub repository](https://github.com/giswqs/streamlit-multipage-template).
         """
     )
-    st.header("Instructions")
+    st.header(f"{stations_cnt} 駅")
     m = leafmap.Map(center=(37, 137), zoom=5, minimap_control=minimap_control)
     m.add_geojson(converted_geojson, layer_name="Roadside Stations")
     m.to_streamlit()
