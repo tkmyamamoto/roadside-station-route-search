@@ -2,3 +2,5 @@ pprintpp
 leafmap
 streamlit
 pandas
+openpyxl
+xlrd
