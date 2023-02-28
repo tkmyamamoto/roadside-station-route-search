@@ -58,7 +58,7 @@ def get_region(prefecture: str, municipality=None):
 def get_station_names_list(json_data, keys: list):
     """Get stations list with specified key.
     Args:
-        src (dict): Loaded json data.
+        json_data (dict): Loaded json data.
         keys (list): Query keys list, e.g. [["都道府県名", "北海道"], ["市町村名", "札幌市"]].
 
     Returns:
@@ -75,3 +75,18 @@ def get_station_names_list(json_data, keys: list):
         if match:
             station_names_match_list.append(station["properties"]["道の駅名"])
     return station_names_match_list
+
+
+def get_property(json_data, property: str):
+    """Get single property.
+    Args:
+        json_data (dict): Loaded json data.
+        property (str): Query property, e.g. "都道府県名", "市町村名".
+
+    Returns:
+        values (list): List of values of property key.
+    """
+    values = []
+    for station in json_data["features"]:
+        values.append(station["properties"][property])
+    return values
