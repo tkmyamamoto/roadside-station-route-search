@@ -4,10 +4,18 @@
 import os
 from pprint import pprint
 
+import folium
 import leafmap.foliumap as leafmap
 import streamlit as st
 
-from rsrs.common.code import get_code
+from rsrs.common.code import (
+    NAGANO_SPLIT_3,
+    NAGANO_SPLIT_10,
+    PREFECTURES_JP_CODE,
+    REGION_JP_CONTENTS,
+    get_code,
+)
+from rsrs.common.properties import get_station_names_list
 from rsrs.misc.load_data import convert_geojson_properties, load_geojson
 
 
@@ -17,8 +25,10 @@ def main():
 
     if not os.path.exists(converted_geojson):
         convert_geojson_properties(raw_geojson, converted_geojson)
-    json_data = load_geojson(converted_geojson)["features"]
-    stations_cnt = len(json_data)
+    json_data = load_geojson(converted_geojson)
+    fields = list(json_data["features"][0]["properties"].keys())
+    del fields[6:10]
+    stations_cnt = len(json_data["features"])
 
     st.set_page_config(layout="wide")
 
@@ -59,8 +69,34 @@ def main():
     # Select roadside station
     st.sidebar.header("Choice of stations")
 
-    # if agree:
-    #     st.write('Great!')
+    def sel_callback(args):
+        for arg in args:
+            exec(f"st.session_state.{arg} = st.session_state.sel")
+            # st.session_state.B = st.session_state.sel
+
+    st.sidebar.write("### Control")
+    st.sidebar.checkbox("select all", key="sel", on_change=sel_callback, args=[["A", "B"]])
+
+    st.sidebar.write("### main")
+    st.sidebar.checkbox("a", key="A")
+    st.sidebar.checkbox("b", key="B")
+    st.sidebar.checkbox("c", key="C")
+
+    tabs_region = st.sidebar.tabs(REGION_JP_CONTENTS.keys())
+    for tab_region, region in zip(tabs_region, REGION_JP_CONTENTS.keys()):
+        with tab_region:
+            tabs_pref = st.tabs(REGION_JP_CONTENTS[region])
+            for tab_pref, pref in zip(tabs_pref, REGION_JP_CONTENTS[region]):
+                if pref in ["長野県北中部", "長野県南部"]:
+                    pref = "長野県"
+                station_names_list = get_station_names_list(
+                    json_data, [["都道府県名", pref], ["地方名", region]]
+                )
+                with tab_pref:
+                    # st.write(pref)
+                    st.write(station_names_list)
+                    # for station_name in station_names_list:
+                    #     st.checkbox(station_name)
 
     # html = "<h1>world</h1>"
     # st.components.v1.html(html)
@@ -75,17 +111,17 @@ def main():
     )
     st.header(f"{stations_cnt} 駅")
     m = leafmap.Map(center=(37, 137), zoom=5, minimap_control=minimap_control)
-    m.add_geojson(converted_geojson, layer_name="Roadside Stations")
+    tooltip = folium.GeoJsonTooltip(
+        fields=["道の駅名"],
+        labels=False,
+        style=("background-color: white; color: #333333; font-family: arial; font-size: 20px"),
+    )
+    popup = folium.GeoJsonPopup(fields=fields, labels=True)
+    folium.GeoJson(
+        converted_geojson, name="Roadside Stations", tooltip=tooltip, popup=popup
+    ).add_to(m)
+    # m.add_geojson(converted_geojson, layer_name="Roadside Stations",tooltip=tooltip)
     m.to_streamlit()
-    # m.to_streamlit(height=700)
-
-    # PREFECTURES_JP_CODE
-    # PREFECTURES_EN_CODE
-    # REGION_JP_CODE
-    # REGION_JP_CONTENTS
-    # NAGANO_SPLIT_10
-    # NAGANO_SPLIT_3
-    # print(get_code(["PREFECTURES_JP_CODE"])[0])
 
 
 if __name__ == "__main__":
