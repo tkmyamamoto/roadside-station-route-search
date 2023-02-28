@@ -12,7 +12,7 @@ on:
 
 jobs:
   linter_and_test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 10
       matrix:
