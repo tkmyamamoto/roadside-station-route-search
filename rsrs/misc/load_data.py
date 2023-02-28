@@ -4,23 +4,36 @@
 import json
 from pathlib import Path
 
+from rsrs.common.properties import get_region
+
 
 def load_geojson(path):
-    """Change dict key.
+    """Load geojson file.
 
     Args:
         path (str): Json path.
 
     Returns:
-        src: Loaded json data.
+        src (dict): Loaded json data.
     """
     with open(path) as f:
         src = json.load(f)
     return src
 
 
+def save_geojson(src, path):
+    """Save geojson file.
+
+    Args:
+        src (dict): Json data to save.
+        path (str): Json path.
+    """
+    with open(path, "w") as f:
+        json.dump(src, f, indent=2, ensure_ascii=False)
+
+
 def convert_geojson_properties(load_json_path: str, save_json_path: str):
-    """Convert geojson properties
+    """Convert geojson properties.
 
     Args:
         load_json_path (str): Json path of roadside stations to read.
@@ -28,6 +41,7 @@ def convert_geojson_properties(load_json_path: str, save_json_path: str):
     Returns:
         save_json_path (str): Json path of roadside stations after changed to write.
     """
+    # Stage 1
     values_from_to = {": 1.0": ': "○"', ": 2.0": ': "×"'}
     keys_from_to = {
         "P35_001": "緯度",
@@ -74,3 +88,14 @@ def convert_geojson_properties(load_json_path: str, save_json_path: str):
         content = content.replace(old_key, new_key)
 
     write_path.write_text(content)
+
+    # Stage 2
+    content = load_geojson(write_path)
+    for i in range(len(content["features"])):
+        prefecture = content["features"][i]["properties"]["都道府県名"]
+        municipality = content["features"][i]["properties"]["市町村名"]
+        content["features"][i]["properties"]["地方名"] = get_region(prefecture, municipality)
+        content["features"][i]["properties"]["都道府県内道の駅番号"] = 1
+    save_geojson(content, write_path)
+
+    print("Finish converting.")
