@@ -37,7 +37,7 @@ def main():
     #     convert_geojson_properties(raw_geojson, converted_geojson)
     json_data = load_geojson(converted_geojson)["features"]
     check_get_region_func(json_data)
-    
+
 
 if __name__ == "__main__":
     main()
