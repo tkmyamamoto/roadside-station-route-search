@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from rsrs.common.code import (NAGANO_SPLIT_3, NAGANO_SPLIT_10, PREFECTURES_JP_CODE,
-                              REGION_JP_CONTENTS,)
+from rsrs.common.code import (
+    NAGANO_SPLIT_3,
+    NAGANO_SPLIT_10,
+    PREFECTURES_JP_CODE,
+    REGION_JP_CONTENTS,
+)
 from rsrs.utils.dict import get_key_from_list_in_value
 
 
