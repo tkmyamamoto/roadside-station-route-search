@@ -9,8 +9,8 @@ python tests/test.py
 ## Formatter
 フォーマッターをかけて修正する．
 ```sh
-black {rsrs,tests,tools}/
 isort {rsrs,tests,tools}/
+black {rsrs,tests,tools}/
 ```
 
 ## Git

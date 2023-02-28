@@ -20,7 +20,7 @@ def load_geojson(path):
 
 
 def convert_geojson_properties(load_json_path: str, save_json_path: str):
-    """Convert geojson properties
+    """Convert geojson properties.
 
     Args:
         load_json_path (str): Json path of roadside stations to read.
