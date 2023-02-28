@@ -1,13 +1,28 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from rsrs.common.code import (
-    NAGANO_SPLIT_3,
-    NAGANO_SPLIT_10,
-    PREFECTURES_JP_CODE,
-    REGION_JP_CONTENTS,
-)
+from rsrs.common.code import (NAGANO_SPLIT_2, NAGANO_SPLIT_3, NAGANO_SPLIT_10, PREFECTURES_JP_CODE,
+                              REGION_JP_CONTENTS,)
 from rsrs.utils.dict import get_key_from_list_in_value
+
+
+def get_nagano_region_2(municipality: str):
+    """Get nagano region from municipality.
+
+    Args:
+        municipality (str): City, wards, towns, villages, e.g. 中央区.
+
+    Returns:
+        nagano_region_2 (str): Region, 長野県北中部 or 長野県南部.
+
+    Examples:
+        >>> print(get_nagano_region_2("長野市"))
+        >>> # 長野県北中部
+    """
+    nagano_region_10 = get_key_from_list_in_value(NAGANO_SPLIT_10, municipality)
+    nagano_region_3 = get_key_from_list_in_value(NAGANO_SPLIT_3, nagano_region_10)
+    nagano_region_2 = get_key_from_list_in_value(NAGANO_SPLIT_2, nagano_region_3)
+    return nagano_region_2
 
 
 def get_region(prefecture: str, municipality=None):
@@ -27,9 +42,8 @@ def get_region(prefecture: str, municipality=None):
         raise ValueError("When prefecture is 長野県, municipality is also required.")
 
     if prefecture == "長野県":
-        nagano_region_10 = get_key_from_list_in_value(NAGANO_SPLIT_10, municipality)
-        nagano_region_3 = get_key_from_list_in_value(NAGANO_SPLIT_3, nagano_region_10)
-        region = get_key_from_list_in_value(REGION_JP_CONTENTS, nagano_region_3)
+        nagano_region_2 = get_nagano_region_2(municipality)
+        region = get_key_from_list_in_value(REGION_JP_CONTENTS, nagano_region_2)
     else:
         region = get_key_from_list_in_value(REGION_JP_CONTENTS, prefecture)
 
