@@ -21,11 +21,17 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
+packages = [
+    {include = "rsrs"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
 numpy = "*"
 pip = ">=20.0.0"
+pprintpp = "*"
+leafmap = "^0.17"
+streamlit = "^1.19"
 
 [tool.poetry.dev-dependencies]
 flake8 = "*"
