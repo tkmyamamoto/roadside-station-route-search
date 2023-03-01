@@ -30,8 +30,8 @@ python = "^3.7"
 numpy = "*"
 pip = ">=20.0.0"
 pprintpp = "*"
-leafmap = "^0.17"
-streamlit = "^1.19"
+leafmap = "*"
+streamlit = "*"
 
 [tool.poetry.dev-dependencies]
 flake8 = "*"
